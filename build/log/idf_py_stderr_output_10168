@@ -1,0 +1,45 @@
+[0;33m--- Warning: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM6 instead...[0m
+[0;33m--- esp-idf-monitor 1.9.0 on \\.\COM6 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x403761da: [0;33mpanic_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/panic.c[0m[0m:[1;31m486[0m
+[0m--- 0x40385b09: [0;33mesp_system_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/esp_system_chip.c[0m[0m:[1;31m87[0m
+[0m--- 0x4038ef61: [0;33m__assert_func[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/newlib/assert.c[0m[0m:[1;31m80[0m
+[0m--- 0x4200d555: [0;33mlvgl_port_lock[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/lvgl_port.c[0m[0m:[1;31m548[0m
+[0m--- 0x4200d187: [0;33mapp_main[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/main.c[0m[0m:[1;31m462[0m
+[0m--- 0x420eee0b: [0;33mmain_task[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/app_startup.c[0m[0m:[1;31m208[0m
+[0m--- 0x4038669d: [0;33mvPortTaskWrapper[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
+[0m--- 0x40376114: [0;33mesp_restart_noos[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/soc/esp32s3/system_internal.c[0m[0m:[1;31m162[0m
+[0m--- 0x403761da: [0;33mpanic_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/panic.c[0m[0m:[1;31m486[0m
+[0m--- 0x40385b09: [0;33mesp_system_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/esp_system_chip.c[0m[0m:[1;31m87[0m
+[0m--- 0x4038ef61: [0;33m__assert_func[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/newlib/assert.c[0m[0m:[1;31m80[0m
+[0m--- 0x4200d555: [0;33mlvgl_port_lock[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/lvgl_port.c[0m[0m:[1;31m548[0m
+[0m--- 0x4200d187: [0;33mapp_main[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/main.c[0m[0m:[1;31m462[0m
+[0m--- 0x420eee0b: [0;33mmain_task[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/app_startup.c[0m[0m:[1;31m208[0m
+[0m--- 0x4038669d: [0;33mvPortTaskWrapper[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
+[0m--- 0x40376114: [0;33mesp_restart_noos[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/soc/esp32s3/system_internal.c[0m[0m:[1;31m162[0m
+[0m--- 0x403761da: [0;33mpanic_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/panic.c[0m[0m:[1;31m486[0m
+[0m--- 0x40385b09: [0;33mesp_system_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/esp_system_chip.c[0m[0m:[1;31m87[0m
+[0m--- 0x4038ef61: [0;33m__assert_func[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/newlib/assert.c[0m[0m:[1;31m80[0m
+[0m--- 0x4200d555: [0;33mlvgl_port_lock[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/lvgl_port.c[0m[0m:[1;31m548[0m
+[0m--- 0x4200d187: [0;33mapp_main[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/main.c[0m[0m:[1;31m462[0m
+[0m--- 0x420eee0b: [0;33mmain_task[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/app_startup.c[0m[0m:[1;31m208[0m
+[0m--- 0x4038669d: [0;33mvPortTaskWrapper[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
+[0m--- 0x40376114: [0;33mesp_restart_noos[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/soc/esp32s3/system_internal.c[0m[0m:[1;31m162[0m
+[0m--- 0x403761da: [0;33mpanic_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/panic.c[0m[0m:[1;31m486[0m
+[0m--- 0x40385b09: [0;33mesp_system_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/esp_system_chip.c[0m[0m:[1;31m87[0m
+[0m--- 0x4038ef61: [0;33m__assert_func[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/newlib/assert.c[0m[0m:[1;31m80[0m
+[0m--- 0x4200d555: [0;33mlvgl_port_lock[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/lvgl_port.c[0m[0m:[1;31m548[0m
+[0m--- 0x4200d187: [0;33mapp_main[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/main.c[0m[0m:[1;31m462[0m
+[0m--- 0x420eee0b: [0;33mmain_task[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/app_startup.c[0m[0m:[1;31m208[0m
+[0m--- 0x4038669d: [0;33mvPortTaskWrapper[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
+[0m--- 0x40376114: [0;33mesp_restart_noos[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/soc/esp32s3/system_internal.c[0m[0m:[1;31m162[0m
+[0m--- 0x403761da: [0;33mpanic_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/panic.c[0m[0m:[1;31m486[0m
+[0m--- 0x40385b09: [0;33mesp_system_abort[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/esp_system_chip.c[0m[0m:[1;31m87[0m
+[0m--- 0x4038ef61: [0;33m__assert_func[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/newlib/assert.c[0m[0m:[1;31m80[0m
+[0m--- 0x4200d555: [0;33mlvgl_port_lock[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/lvgl_port.c[0m[0m:[1;31m548[0m
+[0m--- 0x4200d187: [0;33mapp_main[0m[0m at [0;32mC:/Users/OPRUSS/Downloads/Run_Test-02/main/main.c[0m[0m:[1;31m462[0m
+[0m--- 0x420eee0b: [0;33mmain_task[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/app_startup.c[0m[0m:[1;31m208[0m
+[0m--- 0x4038669d: [0;33mvPortTaskWrapper[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
+[0m--- 0x40376114: [0;33mesp_restart_noos[0m[0m at [0;32mD:/v5.3.5/esp-idf/components/esp_system/port/soc/esp32s3/system_internal.c[0m[0m:[1;31m162[0m
+[0m

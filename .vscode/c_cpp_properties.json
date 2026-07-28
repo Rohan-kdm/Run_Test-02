@@ -1,0 +1,35 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\Espressif\\v5.3.5\\esp-idf",
+                "C:\\Espressif\\v5.3.5\\esp-idf\\components",
+                "${workspaceFolder}/build/config",
+                "C:\\Espressif\\v5.3.5\\esp-idf\\components\\freertos\\FreeRTOS-Kernel\\include",
+                "C:\\Espressif\\v5.3.5\\esp-idf\\components\\freertos\\esp_additions/include",
+                "C:\\Espressif\\v5.3.5\\esp-idf\\components\\esp_hw_support\\include",
+                "C:\\Espressif\\v5.3.5\\esp-idf\\components\\esp_common\\include",
+                "C:\\Espressif\\v5.3.5\\esp-idf\\components\\soc\\esp32s3\\include",
+                "C:\\Espressif\\v5.3.5\\esp-idf\\components\\soc",
+                "C:\\Espressif\\v5.3.5\\esp-idf\\components\\driver",
+                "D:\\04 Shubham\\For_Embeded_Programing\\ESP-IDF_PROJECTS\\Run_Test-02\\components\\lvgl__lvgl\\src",
+                "C:\\Espressif\\v5.3.5\\esp-idf\\components\\esp_lcd/include",
+                "C:/Espressif/v5.3.5/esp-idf/components/hal/include"
+            ],
+            "defines": [
+                "ESP_PLATFORM",
+                "IDF_VER=\"v5.3.5\"",
+                "ESP32S3"
+            ],
+            "compilerPath": "c:\\Espressif\\tools\\tools\\xtensa-esp-elf\\esp-13.2.0_20250707\\xtensa-esp-elf\\bin\\xtensa-esp32s3-elf-gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64",
+            "compileCommands": [
+                "${workspaceFolder}/build/compile_commands.json"
+            ]
+        }
+    ],
+    "version": 4
+}

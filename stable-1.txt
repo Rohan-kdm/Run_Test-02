@@ -1,0 +1,201 @@
+#include "ui.h"
+#include <stdio.h>
+
+// --- CSS Color Variables Translated ---
+#define COLOR_BG        lv_color_hex(0x0B0E14)
+#define COLOR_CARD      lv_color_hex(0x161A23)
+#define COLOR_LINE      lv_color_hex(0x262D3A)
+#define COLOR_TEXT      lv_color_hex(0xF5F7FA)
+#define COLOR_DIM       lv_color_hex(0x8A93A6)
+#define COLOR_ACCENT    lv_color_hex(0x2E86DE)
+#define COLOR_EXCELLENT lv_color_hex(0x2ECC71)
+
+// --- Helper: Create a Metric Card ---
+static lv_obj_t* create_metric_card(lv_obj_t* parent, const char* title_text, const char* val_text, const char* unit_text) {
+    lv_obj_t* card = lv_obj_create(parent);
+    lv_obj_set_size(card, lv_pct(100), lv_pct(100)); 
+    
+    // Explicitly clear scrollable flag for static cards (LVGL 8 fix)
+    lv_obj_clear_flag(card, LV_OBJ_FLAG_SCROLLABLE); 
+    
+    lv_obj_set_style_bg_color(card, COLOR_CARD, 0);
+    lv_obj_set_style_radius(card, 18, 0);
+    lv_obj_set_style_border_width(card, 0, 0);
+    lv_obj_set_style_pad_all(card, 14, 0);
+    
+    // Flex column for the card contents
+    lv_obj_set_layout(card, LV_LAYOUT_FLEX);
+    lv_obj_set_flex_flow(card, LV_FLEX_FLOW_COLUMN);
+    lv_obj_set_flex_align(card, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+
+    // Title 
+    lv_obj_t* title = lv_label_create(card);
+    lv_label_set_text(title, title_text);
+    lv_obj_set_style_text_color(title, COLOR_DIM, 0);
+
+    // Value 
+    lv_obj_t* val = lv_label_create(card);
+    lv_label_set_text(val, val_text);
+    lv_obj_set_style_text_color(val, COLOR_TEXT, 0);
+    lv_obj_set_style_text_font(val, &lv_font_montserrat_24, 0); 
+
+    // Unit 
+    lv_obj_t* unit = lv_label_create(card);
+    lv_label_set_text(unit, unit_text);
+    lv_obj_set_style_text_color(unit, COLOR_DIM, 0);
+
+    return card;
+}
+
+// --- Main UI Builder ---
+void build_opruss_ui(void) {
+    lv_obj_t * scr = lv_scr_act();
+    lv_obj_set_style_bg_color(scr, COLOR_BG, 0);
+    lv_obj_set_style_text_color(scr, COLOR_TEXT, 0);
+    lv_obj_clear_flag(scr, LV_OBJ_FLAG_SCROLLABLE);
+    
+    // Main Flex Container
+    lv_obj_t * main_cont = lv_obj_create(scr);
+    lv_obj_set_size(main_cont, 800, 480);
+    lv_obj_clear_flag(main_cont, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_pad_all(main_cont, 0, 0);
+    lv_obj_set_style_border_width(main_cont, 0, 0);
+    lv_obj_set_style_bg_opa(main_cont, LV_OPA_TRANSP, 0);
+    lv_obj_set_layout(main_cont, LV_LAYOUT_FLEX);
+    lv_obj_set_flex_flow(main_cont, LV_FLEX_FLOW_COLUMN);
+
+    // Top Bar
+    lv_obj_t * top_bar = lv_obj_create(main_cont);
+    lv_obj_set_size(top_bar, 800, 42);
+    lv_obj_clear_flag(top_bar, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_bg_opa(top_bar, LV_OPA_TRANSP, 0);
+    lv_obj_set_style_border_width(top_bar, 0, 0);
+    lv_obj_set_style_border_side(top_bar, LV_BORDER_SIDE_BOTTOM, 0);
+    lv_obj_set_style_border_width(top_bar, 1, 0);
+    lv_obj_set_style_border_color(top_bar, COLOR_LINE, 0);
+    lv_obj_set_style_pad_hor(top_bar, 22, 0);
+    
+    lv_obj_set_layout(top_bar, LV_LAYOUT_FLEX);
+    lv_obj_set_flex_flow(top_bar, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(top_bar, LV_FLEX_ALIGN_SPACE_BETWEEN, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+
+    lv_obj_t * time_lbl = lv_label_create(top_bar);
+    lv_label_set_text(time_lbl, "09:42 · Tue 18 Jun");
+    lv_obj_set_style_text_color(time_lbl, COLOR_DIM, 0);
+
+    lv_obj_t * room_lbl = lv_label_create(top_bar);
+    lv_label_set_text(room_lbl, "Living Room");
+
+    lv_obj_t * status_lbl = lv_label_create(top_bar);
+    lv_label_set_text(status_lbl, "WiFi OK · Cloud OK");
+    lv_obj_set_style_text_color(status_lbl, COLOR_DIM, 0);
+
+    // Body Container
+    lv_obj_t * body_cont = lv_obj_create(main_cont);
+    lv_obj_set_size(body_cont, 800, 438); 
+    lv_obj_clear_flag(body_cont, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_pad_all(body_cont, 0, 0);
+    lv_obj_set_style_border_width(body_cont, 0, 0);
+    lv_obj_set_style_bg_opa(body_cont, LV_OPA_TRANSP, 0);
+    lv_obj_set_layout(body_cont, LV_LAYOUT_FLEX);
+    lv_obj_set_flex_flow(body_cont, LV_FLEX_FLOW_ROW);
+
+    // Sidebar Rail
+    lv_obj_t * rail = lv_obj_create(body_cont);
+    lv_obj_set_size(rail, 64, 438);
+    lv_obj_clear_flag(rail, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_bg_color(rail, lv_color_hex(0x0D1118), 0);
+    lv_obj_set_style_border_width(rail, 0, 0);
+    lv_obj_set_style_border_side(rail, LV_BORDER_SIDE_RIGHT, 0);
+    lv_obj_set_style_border_width(rail, 1, 0);
+    lv_obj_set_style_border_color(rail, COLOR_LINE, 0);
+    lv_obj_set_style_pad_top(rail, 14, 0);
+    
+    lv_obj_set_layout(rail, LV_LAYOUT_FLEX);
+    lv_obj_set_flex_flow(rail, LV_FLEX_FLOW_COLUMN);
+    lv_obj_set_flex_align(rail, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+
+    const char* icons[] = {LV_SYMBOL_HOME, LV_SYMBOL_IMAGE, LV_SYMBOL_SETTINGS}; 
+    for(int i = 0; i < 3; i++) {
+        lv_obj_t * btn = lv_btn_create(rail);
+        lv_obj_set_size(btn, 38, 38);
+        lv_obj_set_style_radius(btn, 12, 0);
+        lv_obj_set_style_bg_color(btn, i == 0 ? COLOR_ACCENT : COLOR_BG, 0); 
+        
+        lv_obj_t * icon_lbl = lv_label_create(btn);
+        lv_label_set_text(icon_lbl, icons[i]);
+        lv_obj_center(icon_lbl);
+    }
+
+    // Content Area
+    lv_obj_t * content = lv_obj_create(body_cont);
+    lv_obj_set_size(content, 800 - 64, 438);
+    lv_obj_clear_flag(content, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_pad_all(content, 18, 0);
+    lv_obj_set_style_border_width(content, 0, 0);
+    lv_obj_set_style_bg_opa(content, LV_OPA_TRANSP, 0);
+    lv_obj_set_layout(content, LV_LAYOUT_FLEX);
+    lv_obj_set_flex_flow(content, LV_FLEX_FLOW_ROW);
+
+    // AQI Gauge Area
+    lv_obj_t * gauge_cont = lv_obj_create(content);
+    lv_obj_set_size(gauge_cont, 300, 300);
+    lv_obj_clear_flag(gauge_cont, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_bg_opa(gauge_cont, LV_OPA_TRANSP, 0);
+    lv_obj_set_style_border_width(gauge_cont, 0, 0);
+    
+    lv_obj_t * arc = lv_arc_create(gauge_cont);
+    lv_obj_set_size(arc, 280, 280);
+    lv_arc_set_rotation(arc, 135);
+    lv_arc_set_bg_angles(arc, 0, 270);
+    lv_arc_set_value(arc, 42); 
+    lv_obj_set_style_arc_color(arc, COLOR_LINE, LV_PART_MAIN);
+    lv_obj_set_style_arc_width(arc, 18, LV_PART_MAIN);
+    lv_obj_set_style_arc_color(arc, COLOR_EXCELLENT, LV_PART_INDICATOR);
+    lv_obj_set_style_arc_width(arc, 18, LV_PART_INDICATOR);
+    lv_obj_remove_style(arc, NULL, LV_PART_KNOB); 
+    lv_obj_center(arc);
+
+    lv_obj_t * aqi_val = lv_label_create(gauge_cont);
+    lv_label_set_text(aqi_val, "42");
+    lv_obj_set_style_text_font(aqi_val, &lv_font_montserrat_24, 0);
+    lv_obj_align(aqi_val, LV_ALIGN_CENTER, 0, -10);
+
+    lv_obj_t * aqi_cat = lv_label_create(gauge_cont);
+    lv_label_set_text(aqi_cat, "EXCELLENT");
+    lv_obj_set_style_text_color(aqi_cat, COLOR_EXCELLENT, 0);
+    lv_obj_align(aqi_cat, LV_ALIGN_CENTER, 0, 30);
+
+    // Metrics Grid 
+    lv_obj_t * metrics_cont = lv_obj_create(content);
+    lv_obj_set_size(metrics_cont, 400, 300); 
+    lv_obj_clear_flag(metrics_cont, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_bg_opa(metrics_cont, LV_OPA_TRANSP, 0);
+    lv_obj_set_style_border_width(metrics_cont, 0, 0);
+    
+    static lv_coord_t col_dsc[] = {LV_GRID_FR(1), LV_GRID_FR(1), LV_GRID_FR(1), LV_GRID_TEMPLATE_LAST};
+    static lv_coord_t row_dsc[] = {LV_GRID_FR(1), LV_GRID_FR(1), LV_GRID_TEMPLATE_LAST};
+    lv_obj_set_layout(metrics_cont, LV_LAYOUT_GRID);
+    lv_obj_set_style_grid_column_dsc_array(metrics_cont, col_dsc, 0);
+    lv_obj_set_style_grid_row_dsc_array(metrics_cont, row_dsc, 0);
+    lv_obj_set_style_pad_row(metrics_cont, 14, 0); 
+    lv_obj_set_style_pad_column(metrics_cont, 14, 0); 
+
+    lv_obj_t * c1 = create_metric_card(metrics_cont, "PM2.5", "10", "ug/m3");
+    lv_obj_set_grid_cell(c1, LV_GRID_ALIGN_STRETCH, 0, 1, LV_GRID_ALIGN_STRETCH, 0, 1);
+
+    lv_obj_t * c2 = create_metric_card(metrics_cont, "PM10", "18", "ug/m3");
+    lv_obj_set_grid_cell(c2, LV_GRID_ALIGN_STRETCH, 1, 1, LV_GRID_ALIGN_STRETCH, 0, 1);
+
+    lv_obj_t * c3 = create_metric_card(metrics_cont, "TVOC", "120", "ppb");
+    lv_obj_set_grid_cell(c3, LV_GRID_ALIGN_STRETCH, 2, 1, LV_GRID_ALIGN_STRETCH, 0, 1);
+
+    lv_obj_t * c4 = create_metric_card(metrics_cont, "TEMP", "24.6", "C");
+    lv_obj_set_grid_cell(c4, LV_GRID_ALIGN_STRETCH, 0, 1, LV_GRID_ALIGN_STRETCH, 1, 1);
+
+    lv_obj_t * c5 = create_metric_card(metrics_cont, "HUMIDITY", "47", "%RH");
+    lv_obj_set_grid_cell(c5, LV_GRID_ALIGN_STRETCH, 1, 1, LV_GRID_ALIGN_STRETCH, 1, 1);
+
+    lv_obj_t * c6 = create_metric_card(metrics_cont, "PURIFIER", "ON", "Auto");
+    lv_obj_set_grid_cell(c6, LV_GRID_ALIGN_STRETCH, 2, 1, LV_GRID_ALIGN_STRETCH, 1, 1);
+}

@@ -30,7 +30,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define EXAMPLE_LCD_H_RES               (LVGL_PORT_H_RES)
 #define EXAMPLE_LCD_V_RES               (LVGL_PORT_V_RES)
-#define EXAMPLE_LCD_PIXEL_CLOCK_HZ      (16 * 1000 * 1000)
+#define EXAMPLE_LCD_PIXEL_CLOCK_HZ      (14 * 1000 * 1000)
 #define EXAMPLE_LCD_BIT_PER_PIXEL       (16)
 #define EXAMPLE_RGB_BIT_PER_PIXEL       (16)
 #define EXAMPLE_RGB_DATA_WIDTH          (16)
@@ -57,7 +57,7 @@
 #define EXAMPLE_LCD_IO_RGB_DATA14       (GPIO_NUM_41)
 #define EXAMPLE_LCD_IO_RGB_DATA15       (GPIO_NUM_40)
 
-#define EXAMPLE_LCD_IO_RST              (-1)             // -1 if not used
+#define EXAMPLE_LCD_IO_RST              (-1)    // -1 if not used
 #define EXAMPLE_PIN_NUM_BK_LIGHT        (-1)    // -1 if not used
 #define EXAMPLE_LCD_BK_LIGHT_ON_LEVEL   (1)
 #define EXAMPLE_LCD_BK_LIGHT_OFF_LEVEL  !EXAMPLE_LCD_BK_LIGHT_ON_LEVEL

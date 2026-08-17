@@ -6,7 +6,8 @@
 #include <sys/stat.h>
 #include "esp_vfs_fat.h"
 #include "sdmmc_cmd.h"
-#include "driver/i2c.h"
+// #include "driver/i2c.h"
+#include "driver/i2c_master.h"
 
 // I2C configuration
 /* Same I2C bus used by the LCD */
@@ -40,9 +41,13 @@
 // #define PIN_NUM_MOSI CONFIG_EXAMPLE_PIN_MOSI /*!< Pin number for MOSI   */
 // #define PIN_NUM_CLK CONFIG_EXAMPLE_PIN_CLK   /*!< Pin number for CLK    */
 // #define PIN_NUM_CS CONFIG_EXAMPLE_PIN_CS     /*!< Pin number for CS CS  */
+extern i2c_master_bus_handle_t shared_i2c_bus;
 
 // Function prototypes for initializing and testing SD card functions
 esp_err_t waveshare_sd_card_init();
 esp_err_t waveshare_sd_card_test();
+
+// Added this line so main.c can see the function
+esp_err_t i2c_master_init(void);
 
 #endif

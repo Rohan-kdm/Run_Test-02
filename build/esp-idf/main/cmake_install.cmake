@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/OPRUSS/Downloads/Run_Test-02/main
+# Install script for directory: C:/Run_Test-02/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

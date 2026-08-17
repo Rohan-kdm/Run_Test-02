@@ -1,0 +1,11 @@
+{
+	"name": "project_rainfall_function",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "developer@opruss.com",
+	"dependencies": {
+		"express": "^5.2.1",
+		"nodemailer": "^9.0.5",
+		"zcatalyst-sdk-node": "latest"
+	}
+}

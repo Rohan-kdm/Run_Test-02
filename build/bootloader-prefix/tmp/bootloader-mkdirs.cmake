@@ -10,18 +10,18 @@ if(NOT EXISTS "D:/v5.3.5/esp-idf/components/bootloader/subproject")
   file(MAKE_DIRECTORY "D:/v5.3.5/esp-idf/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "C:/Users/OPRUSS/Downloads/Run_Test-02/build/bootloader"
-  "C:/Users/OPRUSS/Downloads/Run_Test-02/build/bootloader-prefix"
-  "C:/Users/OPRUSS/Downloads/Run_Test-02/build/bootloader-prefix/tmp"
-  "C:/Users/OPRUSS/Downloads/Run_Test-02/build/bootloader-prefix/src/bootloader-stamp"
-  "C:/Users/OPRUSS/Downloads/Run_Test-02/build/bootloader-prefix/src"
-  "C:/Users/OPRUSS/Downloads/Run_Test-02/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/Run_Test-02/build/bootloader"
+  "C:/Run_Test-02/build/bootloader-prefix"
+  "C:/Run_Test-02/build/bootloader-prefix/tmp"
+  "C:/Run_Test-02/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/Run_Test-02/build/bootloader-prefix/src"
+  "C:/Run_Test-02/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/OPRUSS/Downloads/Run_Test-02/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "C:/Run_Test-02/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/OPRUSS/Downloads/Run_Test-02/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "C:/Run_Test-02/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

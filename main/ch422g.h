@@ -4,6 +4,10 @@
 #include <stdint.h>
 #include "esp_err.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef enum {
     CH422G_IO_TOUCH_RST = 1, /* EXIO1, active low */
     CH422G_IO_BACKLIGHT = 2, /* EXIO2 / DISP */
@@ -19,3 +23,7 @@ esp_err_t ch422g_clear_bit(ch422g_io_t io);
 uint8_t ch422g_get_outputs(void);
 esp_err_t ch422g_set_backlight(bool enabled);
 esp_err_t ch422g_set_sd_selected(bool selected);
+
+#ifdef __cplusplus
+}
+#endif

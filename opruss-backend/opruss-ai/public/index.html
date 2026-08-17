@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0B0E14" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>OPRUSS AI</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Google Fonts for Modern Pro Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+    
+    <!-- MQTT Library -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- REACT INJECTS YOUR APP HERE -->
+    <div id="root"></div> 
+
+    <!-- Service Worker for PWA -->
+    <script>
+      if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+              .then(registration => {
+              console.log('ServiceWorker registered successfully!');
+              })
+              .catch(err => {
+              console.log('ServiceWorker registration failed: ', err);
+              });
+          });
+      }
+    </script>
+  </body>
+</html>

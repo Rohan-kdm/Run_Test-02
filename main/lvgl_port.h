@@ -126,7 +126,8 @@ extern "C" {
  *      - ESP_ERR_INVALID_ARG: Invalid argument
  *      - Others: Fail
  */
-esp_err_t lvgl_port_init(esp_lcd_panel_handle_t lcd_handle, esp_lcd_touch_handle_t tp_handle);
+// esp_err_t lvgl_port_init(esp_lcd_panel_handle_t lcd_handle, esp_lcd_touch_handle_t tp_handle);
+esp_err_t lvgl_port_init(void);
 
 /**
  * @brief Take LVGL mutex
@@ -152,7 +153,7 @@ void lvgl_port_unlock(void);
  *      - true:  The tasks need to be re-scheduled
  *      - false: The tasks don't need to be re-scheduled
  */
-bool lvgl_port_notify_rgb_vsync(void);
+// bool lvgl_port_notify_rgb_vsync(void);
 
 #ifdef __cplusplus
 }

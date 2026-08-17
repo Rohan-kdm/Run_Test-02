@@ -1,329 +1,122 @@
-/*=============================================================
- *
- *  web_download.c
- *
- *=============================================================*/
-
-#include "web_download.h"
-
 #include <stdio.h>
 #include <string.h>
+#include <sys/stat.h>
 #include <stdlib.h>
-#include <time.h>
-
 #include "esp_log.h"
 #include "esp_http_server.h"
-
 #include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include "freertos/semphr.h"
+#include "web_download.h"
+
+static const char *TAG = "WEB_DOWNLOAD";
 
 extern SemaphoreHandle_t sd_mutex;
-
+extern char latest_report_filename[128];
 #define MOUNT_POINT "/sdcard"
 
-static const char *TAG = "DOWNLOAD";
-
-/*-------------------------------------------------------------
- * Parse YYYYMMDD
- *------------------------------------------------------------*/
-static bool parse_date(const char *str, struct tm *tm_out)
+// --- HTTP GET Download Handler ---
+static esp_err_t download_get_handler(httpd_req_t *req)
 {
-    if (strlen(str) != 8)
-        return false;
+    char filepath[256];
+    char query_str[128];
+    char start_date[32] = {0};
+    char end_date[32] = {0};
 
-    char buf[5];
-
-    memset(tm_out, 0, sizeof(struct tm));
-
-    memcpy(buf, str, 4);
-    buf[4] = 0;
-    tm_out->tm_year = atoi(buf) - 1900;
-
-    memcpy(buf, str + 4, 2);
-    buf[2] = 0;
-    tm_out->tm_mon = atoi(buf) - 1;
-
-    memcpy(buf, str + 6, 2);
-    buf[2] = 0;
-    tm_out->tm_mday = atoi(buf);
-
-    tm_out->tm_hour = 0;
-    tm_out->tm_min = 0;
-    tm_out->tm_sec = 0;
-
-    if (mktime(tm_out) == -1)
-        return false;
-
-    return true;
-}
-
-/*-------------------------------------------------------------
- * Send one file
- *------------------------------------------------------------*/
-static esp_err_t send_csv_file(
-        httpd_req_t *req,
-        const char *filename,
-        bool *header_sent)
-{
-    FILE *fp = fopen(filename, "r");
-
-    if (!fp)
-    {
-        ESP_LOGW(TAG, "Missing %s", filename);
-        return ESP_OK;
-    }
-
-    char line[512];
-    bool first_line = true;
-
-    while (fgets(line, sizeof(line), fp))
-    {
-        if (first_line)
-        {
-            first_line = false;
-
-            if (*header_sent)
-                continue;
-
-            *header_sent = true;
+    // 1. Check if query string exists (e.g., /download?start=20260701&end=20260729)
+    if (httpd_req_get_url_query_str(req, query_str, sizeof(query_str)) == ESP_OK) {
+        if (httpd_query_key_value(query_str, "start", start_date, sizeof(start_date)) == ESP_OK &&
+            httpd_query_key_value(query_str, "end", end_date, sizeof(end_date)) == ESP_OK) {
+            snprintf(filepath, sizeof(filepath), "%s/report_%s_to_%s.csv", MOUNT_POINT, start_date, end_date);
+        } else {
+            snprintf(filepath, sizeof(filepath), "%s/%s", MOUNT_POINT, latest_report_filename);
         }
-
-        esp_err_t err =
-            httpd_resp_send_chunk(
-                req,
-                line,
-                strlen(line));
-
-        if (err != ESP_OK)
-        {
-            fclose(fp);
-            return err;
-        }
+    } else {
+        snprintf(filepath, sizeof(filepath), "%s/%s", MOUNT_POINT, latest_report_filename);
     }
 
-    fclose(fp);
+    ESP_LOGI(TAG, "Attempting to serve file: %s", filepath);
 
-    return ESP_OK;
-}
-
-/*-------------------------------------------------------------
- * Download handler
- *------------------------------------------------------------*/
-static esp_err_t download_handler(httpd_req_t *req)
-{
-    char query[128];
-
-    char start_str[16];
-    char end_str[16];
-
-    memset(query, 0, sizeof(query));
-    memset(start_str, 0, sizeof(start_str));
-    memset(end_str, 0, sizeof(end_str));
-
-    if (httpd_req_get_url_query_str(
-            req,
-            query,
-            sizeof(query)) != ESP_OK)
-    {
-        httpd_resp_send_err(
-            req,
-            HTTPD_400_BAD_REQUEST,
-            "Missing query");
-
+    // 2. Protect SD card access with your FreeRTOS mutex
+    if (xSemaphoreTake(sd_mutex, pdMS_TO_TICKS(2000)) != pdTRUE) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "SD Card busy");
         return ESP_FAIL;
     }
 
-    if (httpd_query_key_value(
-            query,
-            "start",
-            start_str,
-            sizeof(start_str)) != ESP_OK)
-    {
-        httpd_resp_send_err(
-            req,
-            HTTPD_400_BAD_REQUEST,
-            "Missing start");
-
-        return ESP_FAIL;
+    FILE *f = fopen(filepath, "r");
+    if (f == NULL) {
+        snprintf(filepath, sizeof(filepath), "%s/%s", MOUNT_POINT, latest_report_filename);
+        f = fopen(filepath, "r");
     }
 
-    if (httpd_query_key_value(
-            query,
-            "end",
-            end_str,
-            sizeof(end_str)) != ESP_OK)
-    {
-        httpd_resp_send_err(
-            req,
-            HTTPD_400_BAD_REQUEST,
-            "Missing end");
-
-        return ESP_FAIL;
-    }
-
-    struct tm start_tm;
-    struct tm end_tm;
-
-    if (!parse_date(start_str, &start_tm))
-    {
-        httpd_resp_send_err(
-            req,
-            HTTPD_400_BAD_REQUEST,
-            "Bad start date");
-
-        return ESP_FAIL;
-    }
-
-    if (!parse_date(end_str, &end_tm))
-    {
-        httpd_resp_send_err(
-            req,
-            HTTPD_400_BAD_REQUEST,
-            "Bad end date");
-
-        return ESP_FAIL;
-    }
-
-    if (difftime(
-            mktime(&start_tm),
-            mktime(&end_tm)) > 0)
-    {
-        httpd_resp_send_err(
-            req,
-            HTTPD_400_BAD_REQUEST,
-            "Start > End");
-
-        return ESP_FAIL;
-    }
-
-    httpd_resp_set_type(req, "text/csv");
-
-    httpd_resp_set_hdr(
-        req,
-        "Content-Disposition",
-        "attachment; filename=\"AQ7_Report.csv\"");
-
-    if (xSemaphoreTake(
-            sd_mutex,
-            pdMS_TO_TICKS(10000)) != pdTRUE)
-    {
-        httpd_resp_send_err(
-            req,
-            HTTPD_500_INTERNAL_SERVER_ERROR,
-            "SD busy");
-
-        return ESP_FAIL;
-    }
-
-    bool header_sent = false;
-
-    struct tm current = start_tm;
-
-        while (1)
-        {
-            char filename[64];
-
-            snprintf(filename,
-                    sizeof(filename),
-                    MOUNT_POINT "/%04d%02d%02d.csv",
-                    current.tm_year + 1900,
-                    current.tm_mon + 1,
-                    current.tm_mday);
-
-            ESP_LOGI(TAG, "Checking %s", filename);
-
-            esp_err_t err = send_csv_file(
-                                req,
-                                filename,
-                                &header_sent);
-
-            if (err != ESP_OK)
-            {
-                xSemaphoreGive(sd_mutex);
-                return err;
-            }
-
-            /* Reached last date? */
-            if ((current.tm_year == end_tm.tm_year) &&
-                (current.tm_mon  == end_tm.tm_mon)  &&
-                (current.tm_mday == end_tm.tm_mday))
-            {
-                break;
-            }
-
-            /* Next day */
-            current.tm_mday++;
-            mktime(&current);
-        }
-
+    if (f == NULL) {
         xSemaphoreGive(sd_mutex);
-
-        httpd_resp_send_chunk(req, NULL, 0);
-
-        ESP_LOGI(TAG, "CSV download complete");
-
-        return ESP_OK;
+        httpd_resp_send_err(req, HTTPD_404_NOT_FOUND, "Report file not found. Generate export first.");
+        return ESP_FAIL;
     }
 
-    /*-------------------------------------------------------------
-    * Start HTTP Server
-    *------------------------------------------------------------*/
-    httpd_handle_t start_webserver(void)
-    {
-        httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+    // 3. Set HTTP headers for file download attachment
+    httpd_resp_set_type(req, "text/csv");
+    char header_val[256];
+    snprintf(header_val, sizeof(header_val), "attachment; filename=\"%s\"", latest_report_filename);
+    httpd_resp_set_hdr(req, "Content-Disposition", header_val);
 
-        config.server_port = 80;
-        config.max_uri_handlers = 8;
+    // 4. Allocate chunk buffer on the HEAP to prevent stack overflow
+    char *chunk = malloc(1024);
+    if (chunk == NULL) {
+        fclose(f);
+        xSemaphoreGive(sd_mutex);
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Memory allocation failed");
+        return ESP_FAIL;
+    }
 
-        httpd_handle_t server = NULL;
+    size_t chunk_size;
+    esp_err_t err = ESP_OK;
 
-        esp_err_t err = httpd_start(&server, &config);
-
-        if (err != ESP_OK)
-        {
-            ESP_LOGE(TAG, "Failed to start HTTP server");
-            return NULL;
+    while ((chunk_size = fread(chunk, 1, 1024, f)) > 0) {
+        if (httpd_resp_send_chunk(req, chunk, chunk_size) != ESP_OK) {
+            err = ESP_FAIL;
+            break;
         }
+        // Feed the Task Watchdog Timer during large file transfers
+        vTaskDelay(pdMS_TO_TICKS(1));
+    }
 
-        httpd_uri_t download_uri =
-        {
-            .uri       = "/download",
-            .method    = HTTP_GET,
-            .handler   = download_handler,
-            .user_ctx  = NULL
-        };
+    free(chunk);
+    fclose(f);
+    xSemaphoreGive(sd_mutex);
 
-        err = httpd_register_uri_handler(
-                    server,
-                    &download_uri);
+    // 5. Send empty chunk to signal completion of response
+    httpd_resp_send_chunk(req, NULL, 0);
 
-        if (err != ESP_OK)
-        {
-            ESP_LOGE(TAG,
-                    "Failed to register /download");
+    return err;
+}
 
-            httpd_stop(server);
+// URI registration structure
+static const httpd_uri_t download_uri = {
+    .uri       = "/download",
+    .method    = HTTP_GET,
+    .handler   = download_get_handler,
+    .user_ctx  = NULL
+};
 
-            return NULL;
-        }
+// --- Start Web Server ---
+httpd_handle_t start_webserver(void)
+{
+    httpd_handle_t server = NULL;
+    httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+    
+    // Increased stack size from default 4096 to 8192 to prevent potential overflows
+    config.stack_size = 8192;
+    config.uri_match_fn = httpd_uri_match_wildcard;
 
-        ESP_LOGI(TAG,
-                "===================================");
-
-        ESP_LOGI(TAG,
-                "HTTP Download Server Started");
-
-        ESP_LOGI(TAG,
-                "URI : /download");
-
-        ESP_LOGI(TAG,
-                "Example:");
-
-        ESP_LOGI(TAG,
-                "http://<ESP-IP>/download?start=20260701&end=20260710");
-
-        ESP_LOGI(TAG,
-                "===================================");
-
+    ESP_LOGI(TAG, "Starting HTTP server on port: '%d'", config.server_port);
+    if (httpd_start(&server, &config) == ESP_OK) {
+        httpd_register_uri_handler(server, &download_uri);
+        ESP_LOGI(TAG, "Registered /download URI handler successfully");
         return server;
     }
+
+    ESP_LOGE(TAG, "Failed to start HTTP server!");
+    return NULL;
+}

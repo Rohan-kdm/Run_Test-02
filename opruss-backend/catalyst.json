@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "targets": [
+      "project_rainfall_function"
+    ],
+    "ignore": [],
+    "source": "functions"
+  },
+  "client": {
+    "source": "opruss-ai",
+    "plugin": "zcatalyst-cli-plugin-react"
+  }
+}

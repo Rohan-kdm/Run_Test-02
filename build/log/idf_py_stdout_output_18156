@@ -1,0 +1,342 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x19b4
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xe8c
+load:0x403cb700,len:0x3144
+entry 0x403c8940
+[0;32mI (27) boot: ESP-IDF v5.3.5 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Aug 14 2026 16:04:31[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (43) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (48) boot.esp32s3: SPI Mode       : QIO[0m
+[0;32mI (53) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (58) boot: Enabling RNG early entropy source...[0m
+[0;32mI (63) boot: Partition Table:[0m
+[0;32mI (67) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (74) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (82) boot:  1 otadata          OTA data         01 00 0000f000 00002000[0m
+[0;32mI (89) boot:  2 phy_init         RF data          01 01 00011000 00001000[0m
+[0;32mI (96) boot:  3 factory          factory app      00 00 00020000 00800000[0m
+[0;32mI (104) boot:  4 storage          Unknown data     01 82 00820000 007e0000[0m
+[0;32mI (112) boot: End of partition table[0m
+[0;32mI (116) boot: Defaulting to factory image[0m
+[0;32mI (120) esp_image: segment 0: paddr=00020020 vaddr=3c110020 size=19ea60h (1698400) map[0m
+[0;32mI (392) esp_image: segment 1: paddr=001bea88 vaddr=3fca3500 size=01590h (  5520) load[0m
+[0;32mI (393) esp_image: segment 2: paddr=001c0020 vaddr=42000020 size=10f3e4h (1111012) map[0m
+[0;32mI (569) esp_image: segment 3: paddr=002cf40c vaddr=3fca4a90 size=044e4h ( 17636) load[0m
+[0;32mI (573) esp_image: segment 4: paddr=002d38f8 vaddr=40374000 size=1f4c4h (128196) load[0m
+[0;32mI (613) boot: Loaded app from partition at offset 0x20000[0m
+[0;32mI (613) boot: Disabling RNG early entropy source...[0m
+[0;32mI (625) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (625) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (625) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (630) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (635) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (640) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (645) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (651) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (657) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (663) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (669) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (675) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (679) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (684) esp_psram: Speed: 80MHz[0m
+[0;32mI (782) mmu_psram: Read only data copied and mapped to SPIRAM[0m
+[0;32mI (783) cpu_start: Multicore app[0m
+[0;32mI (1039) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1047) cpu_start: Pro cpu start user code[0m
+[0;32mI (1047) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (1047) app_init: Application information:[0m
+[0;32mI (1051) app_init: Project name:     lvgl_porting[0m
+[0;32mI (1056) app_init: App version:      cbbc7bf-dirty[0m
+[0;32mI (1061) app_init: Compile time:     Aug 14 2026 16:00:04[0m
+[0;32mI (1068) app_init: ELF file SHA256:  f40195b98...[0m
+[0;32mI (1073) app_init: ESP-IDF:          v5.3.5[0m
+[0;32mI (1078) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1083) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (1088) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (1093) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1100) heap_init: At 3FCAF078 len 0003A698 (233 KiB): RAM[0m
+[0;32mI (1106) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (1112) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (1119) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (1125) esp_psram: Adding pool of 6528K of PSRAM memory to heap allocator[0m
+[0;32mI (1132) esp_psram: Adding pool of 5K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (1145) spi_flash: detected chip: generic[0m
+[0;32mI (1149) spi_flash: flash io: qio[0m
+[0;32mI (1154) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (1160) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1168) main_task: Started on CPU0[0m
+[0;32mI (1172) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1181) main_task: Calling app_main()[0m
+[0;32mI (1185) gpio: GPIO[8]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1194) gpio: GPIO[9]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1422) NVS_SETTINGS: OPRUSS settings NVS initialized[0m
+[0;32mI (1422) SETTINGS: Restored alert email: developer@opruss.com[0m
+[0;32mI (1423) SETTINGS: Restored email verification: VERIFIED[0m
+[0;32mI (1429) SETTINGS: Restored email change timestamp: 1786531813[0m
+[0;32mI (1436) FAN_CTRL: Fan controller initialized[0m
+[0;32mI (1440) FAN_CTRL: Mode changed to AUTO[0m
+[0;32mI (1446) pp: pp rom version: e7ae62f[0m
+[0;32mI (1449) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1456) wifi:wifi driver task: 3fcc10f4, prio:23, stack:6656, core=0[0m
+[0;32mI (1467) wifi:wifi firmware version: 18db208[0m
+[0;32mI (1467) wifi:wifi certification version: v7.0[0m
+[0;32mI (1469) wifi:config NVS flash: enabled[0m
+[0;32mI (1472) wifi:config nano formating: disabled[0m
+[0;32mI (1476) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1481) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1486) wifi:Init management short buffer num: 32[0m
+[0;32mI (1490) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1494) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1498) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1502) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1506) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1511) wifi_init: rx ba win: 6[0m
+[0;32mI (1514) wifi_init: accept mbox: 6[0m
+[0;32mI (1518) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1522) wifi_init: udp mbox: 6[0m
+[0;32mI (1526) wifi_init: tcp mbox: 6[0m
+[0;32mI (1530) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1534) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1538) wifi_init: tcp mss: 1440[0m
+[0;32mI (1542) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1547) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1553) WIFI: Saved WiFi found: OPRUSS OFFICE[0m
+[0;32mI (1558) phy_init: phy_version 711,97bcf0a2,Aug 25 2025,19:04:10[0m
+[0;32mI (1605) wifi:mode : sta (dc:b4:d9:26:1b:b0)[0m
+[0;32mI (1605) wifi:enable tsf[0m
+[0;32mI (1607) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (1609) MAIN_SYSTEM_CORE: LCD MAC: DC:B4:D9:26:1B:B0[0m
+[0;32mI (1610) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (1613) wifi:new:<11,2>, old:<1,0>, ap:<255,255>, sta:<11,2>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (1622) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (1626) MAIN_SYSTEM_CORE: Initializing SD Card...[0m
+[0;32mI (1631) gpio: GPIO[8]| InputEn: 1| OutputEn: 1| OpenDrain: 1| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1633) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (1644) gpio: GPIO[9]| InputEn: 1| OutputEn: 1| OpenDrain: 1| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1651) wifi:state: assoc -> run (0x10)[0m
+[0;33mW (1658) example: Initializing SD card[0m
+[0;32mI (1661) example: SPI Host = 1[0m
+[0;32mI (1665) example: SPI Pins: MOSI=11 MISO=13 CLK=12 CS=-1[0m
+[0;32mI (1671) example: Mounting filesystem...[0m
+[0;32mI (1718) sdspi_transaction: cmd=5, R1 response: command not supported[0m
+[0;32mI (1762) wifi:connected with OPRUSS OFFICE, aid = 11, channel 11, 40D, bssid = 68:ff:7b:56:a1:ac[0m
+[0;32mI (1763) wifi:security: WPA2-PSK, phy: bgn, rssi: -56[0m
+[0;32mI (1766) wifi:pm start, type: 0[0m
+
+[0;32mI (1768) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (1776) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (1795) wifi:<ba-add>idx:0 (ifx:0, 68:ff:7b:56:a1:ac), tid:0, ssn:3, winSize:64[0m
+[0;32mI (1810) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;33mW (1933) example: Filesystem mounted[0m
+[0;32mI (1934) TEST: SD OK immediately after mount[0m
+[0;32mI (1935) TEST: LOST.DIR[0m
+[0;32mI (1935) TEST: .android_secure[0m
+[0;32mI (1939) TEST: Android[0m
+[0;32mI (1942) TEST: Music[0m
+[0;32mI (1944) TEST: Movies[0m
+[0;32mI (1947) TEST: Pictures[0m
+[0;32mI (1951) TEST: 20260813.csv[0m
+[0;32mI (1954) TEST: 20260729.CSV[0m
+[0;32mI (1961) TEST: report_20260709_to_20260712.csv[0m
+[0;32mI (1963) TEST: 20260730.csv[0m
+[0;32mI (1966) TEST: report_20260730.csv[0m
+[0;32mI (1970) TEST: report_20260709_to_20260711.csv[0m
+[0;32mI (1975) TEST: 20260731.csv[0m
+[0;32mI (1979) TEST: 20260801.csv[0m
+[0;32mI (1982) TEST: 20260803.csv[0m
+[0;32mI (1986) TEST: resized[0m
+[0;32mI (1989) TEST: 20260804.csv[0m
+[0;32mI (1992) TEST: 20260805.csv[0m
+[0;32mI (1999) TEST: System Volume Information[0m
+[0;32mI (2000) TEST: frame_bin5[0m
+[0;32mI (2004) TEST: frame_bin[0m
+[0;32mI (2007) TEST: frame_bin1[0m
+[0;32mI (2010) TEST: frame_bin2[0m
+[0;32mI (2013) TEST: frame_bin3[0m
+[0;32mI (2017) TEST: frame_bin4[0m
+[0;32mI (2024) TEST: report_20260731.csv[0m
+[0;32mI (2024) TEST: Fc-21.pdf[0m
+[0;32mI (2027) TEST: report_20260725_to_20260731.csv[0m
+[0;32mI (2032) TEST: report_20260801.csv[0m
+[0;32mI (2036) TEST: 20260806.csv[0m
+[0;32mI (2040) TEST: 20260807.csv[0m
+[0;32mI (2043) TEST: report_20260807.csv[0m
+[0;32mI (2051) TEST: report_20260804_to_20260806.csv[0m
+[0;32mI (2053) TEST: report_20260728_to_20260730.csv[0m
+[0;32mI (2058) TEST: report_20260802_to_20260804.csv[0m
+[0;32mI (2063) TEST: report_20260801_to_20260807.csv[0m
+[0;32mI (2072) TEST: report_20260708_to_20260711.csv[0m
+[0;32mI (2073) TEST: report_20260801_to_20260805.csv[0m
+[0;32mI (2078) TEST: report_20260801_to_20260806.csv[0m
+[0;32mI (2083) TEST: 20260808.csv[0m
+[0;32mI (2087) TEST: 20260810.csv[0m
+[0;32mI (2090) TEST: 20260709.csv[0m
+[0;32mI (2094) TEST: 20260811.csv[0m
+[0;32mI (2101) TEST: 20260812.csv[0m
+[0;32mI (2101) TEST: 20260814.csv[0m
+[0;32mI (2104) TEST: 20260710.csv[0m
+[0;32mI (2108) TEST: 20260711.csv[0m
+[0;32mI (2111) TEST: 20260712.csv[0m
+[0;32mI (2115) TEST: Logo_Boot_Animation.mjpeg[0m
+[0;32mI (2123) TEST: report_20260810_to_20260812.csv[0m
+[0;32mI (2124) TEST: Logo_bin[0m
+[0;32mI (2127) TEST: boot_video.zbin[0m
+[0;32mI (2131) TEST: report.csv[0m
+[0;32mI (2134) MAIN_SYSTEM_CORE: SD Card Mounted Successfully[0m
+[0;32mI (2140) WEB_DOWNLOAD: Starting HTTP server on port: '80'[0m
+[0;32mI (2148) WEB_DOWNLOAD: Registered /download URI handler successfully[0m
+[0;32mI (2153) LOGGER: SD Logging Task STARTED[0m
+[0;32mI (2254) gpio: GPIO[4]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (2648) LGFX: LovyanGFX RGB Display Initialized[0m
+[0;33mW (2648) GT911: Unable to initialize the I2C address[0m
+[0;32mI (2649) GT911: TouchPad_ID:0x39,0x31,0x31[0m
+[0;32mI (2652) GT911: TouchPad_Config_Version:88[0m
+[0;32mI (2657) LGFX: Modern I2C GT911 Touch Initialized successfully[0m
+[0;32mI (2992) SPIFFS: Read: Hello opruss[0m
+[0;32mI (2992) SPIFFS: SPIFFS mounted successfully[0m
+[0;32mI (2992) SPIFFS: Total: 7405 KB[0m
+[0;32mI (2994) SPIFFS: Used : 0 KB[0m
+[0;32mI (2998) UI: Purifier installed at: 1786537519[0m
+[0;32mI (3002) UI: Purifier restored: state=ON filter=100% install_time=1786537519[0m
+[0;32mI (3011) SENSOR_RX: INCOMING BEFORE COPY: AQI=0 PM25=0.00 PM10=-1.00 TVOC=0.00 TEMP=0.00 HUM=0.00[0m
+[0;32mI (3012) AI_CLIENT: AI worker started. Initial stack watermark: 8836 bytes[0m
+[0;32mI (3020) AIR_MODEL: NORMALIZED: PM25_N=0.000 PM10_N=-1.000 TVOC_N=0.000 T_N=1.000 RH_N=1.000 AQI_N=0.000 CAQI=-1.000[0m
+[0;32mI (3012) AI_CLIENT: AI worker created with 10240 bytes stack[0m
+[0;32mI (3039) NVS: Sensor snapshot saved[0m
+[0;32mI (3045) AI_CLIENT: AI Client initialized with Queue.[0m
+[0;32mI (3049) SENSOR_RX: REAL_DATA AFTER COPY: AQI=0 PM25=0.00 PM10=-1.00 TVOC=0.00 TEMP=0.00 HUM=0.00[0m
+[0;32mI (3055) main_task: Returned from app_main()[0m
+[0;32mI (3285) esp_netif_handlers: sta ip: 192.168.0.114, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (3286) WIFI: Connected! IP: 192.168.0.114[0m
+[0;32mI (3288) MQTT: Device ID: DCB4D9261BB0[0m
+[0;32mI (3293) MQTT: MQTT client started for device: DCB4D9261BB0[0m
+[0;32mI (3517) wifi:<ba-add>idx:1 (ifx:0, 68:ff:7b:56:a1:ac), tid:1, ssn:0, winSize:64[0m
+[0;32mI (3747) MQTT: Connected to MQTT broker[0m
+[0;32mI (3747) MQTT: Subscribing to: opruss/DCB4D9261BB0/command/+[0m
+[0;32mI (9049) UI: Screen1 Data: AQI=0 PM2.5=0.0 PM10=-1.0 TVOC=0.0 Temp=0.0 Hum=0.0[0m
+[0;33mW (9050) PURIFIER: System time not valid yet[0m
+[0;32mI (9053) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (10055) PURIFIER: System time not valid yet[0m
+[0;32mI (10057) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (11058) PURIFIER: System time not valid yet[0m
+[0;32mI (11060) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (12057) PURIFIER: System time not valid yet[0m
+[0;32mI (12059) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (13057) PURIFIER: System time not valid yet[0m
+[0;32mI (13059) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (14057) PURIFIER: System time not valid yet[0m
+[0;32mI (14059) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (15059) PURIFIER: System time not valid yet[0m
+[0;32mI (15061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (16060) PURIFIER: System time not valid yet[0m
+[0;32mI (16062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (17060) PURIFIER: System time not valid yet[0m
+[0;32mI (17062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (18060) PURIFIER: System time not valid yet[0m
+[0;32mI (18062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;32mI (19060) UI: Screen1 Data: AQI=0 PM2.5=0.0 PM10=-1.0 TVOC=0.0 Temp=0.0 Hum=0.0[0m
+[0;33mW (19061) PURIFIER: System time not valid yet[0m
+[0;32mI (19064) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (20059) PURIFIER: System time not valid yet[0m
+[0;32mI (20061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (21059) PURIFIER: System time not valid yet[0m
+[0;32mI (21061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (22059) PURIFIER: System time not valid yet[0m
+[0;32mI (22061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (23060) PURIFIER: System time not valid yet[0m
+[0;32mI (23062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (24060) PURIFIER: System time not valid yet[0m
+[0;32mI (24062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (25059) PURIFIER: System time not valid yet[0m
+[0;32mI (25061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (26060) PURIFIER: System time not valid yet[0m
+[0;32mI (26061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (27060) PURIFIER: System time not valid yet[0m
+[0;32mI (27062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (28060) PURIFIER: System time not valid yet[0m
+[0;32mI (28062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;32mI (29060) UI: Screen1 Data: AQI=0 PM2.5=0.0 PM10=-1.0 TVOC=0.0 Temp=0.0 Hum=0.0[0m
+[0;33mW (29061) PURIFIER: System time not valid yet[0m
+[0;32mI (29064) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (30059) PURIFIER: System time not valid yet[0m
+[0;32mI (30061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (31059) PURIFIER: System time not valid yet[0m
+[0;32mI (31061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (32059) PURIFIER: System time not valid yet[0m
+[0;32mI (32061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (33060) PURIFIER: System time not valid yet[0m
+[0;32mI (33062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (34059) PURIFIER: System time not valid yet[0m
+[0;32mI (34061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (35060) PURIFIER: System time not valid yet[0m
+[0;32mI (35062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (36060) PURIFIER: System time not valid yet[0m
+[0;32mI (36062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (37059) PURIFIER: System time not valid yet[0m
+[0;32mI (37061) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (38060) PURIFIER: System time not valid yet[0m
+[0;32mI (38062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;32mI (39059) UI: Screen1 Data: AQI=0 PM2.5=0.0 PM10=-1.0 TVOC=0.0 Temp=0.0 Hum=0.0[0m
+[0;33mW (39060) PURIFIER: System time not valid yet[0m
+[0;32mI (39063) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (40060) PURIFIER: System time not valid yet[0m
+[0;32mI (40062) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (41061) PURIFIER: System time not valid yet[0m
+[0;32mI (41063) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (42062) PURIFIER: System time not valid yet[0m
+[0;32mI (42064) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (43061) PURIFIER: System time not valid yet[0m
+[0;32mI (43063) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (44062) PURIFIER: System time not valid yet[0m
+[0;32mI (44064) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (45063) PURIFIER: System time not valid yet[0m
+[0;32mI (45065) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (46063) PURIFIER: System time not valid yet[0m
+[0;32mI (46065) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (47064) PURIFIER: System time not valid yet[0m
+[0;32mI (47066) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (48064) PURIFIER: System time not valid yet[0m
+[0;32mI (48066) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;32mI (49064) UI: Screen1 Data: AQI=0 PM2.5=0.0 PM10=-1.0 TVOC=0.0 Temp=0.0 Hum=0.0[0m
+[0;33mW (49065) PURIFIER: System time not valid yet[0m
+[0;32mI (49068) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (50064) PURIFIER: System time not valid yet[0m
+[0;32mI (50066) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (51064) PURIFIER: System time not valid yet[0m
+[0;32mI (51066) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (52064) PURIFIER: System time not valid yet[0m
+[0;32mI (52066) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (53065) PURIFIER: System time not valid yet[0m
+[0;32mI (53067) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (54067) PURIFIER: System time not valid yet[0m
+[0;32mI (54069) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (55068) PURIFIER: System time not valid yet[0m
+[0;32mI (55070) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (56068) PURIFIER: System time not valid yet[0m
+[0;32mI (56070) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (57068) PURIFIER: System time not valid yet[0m
+[0;32mI (57070) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (58069) PURIFIER: System time not valid yet[0m
+[0;32mI (58071) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;32mI (59070) UI: Screen1 Data: AQI=0 PM2.5=0.0 PM10=-1.0 TVOC=0.0 Temp=0.0 Hum=0.0[0m
+[0;33mW (59071) PURIFIER: System time not valid yet[0m
+[0;32mI (59074) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (60070) PURIFIER: System time not valid yet[0m
+[0;32mI (60072) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (61069) PURIFIER: System time not valid yet[0m
+[0;32mI (61071) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (62069) PURIFIER: System time not valid yet[0m
+[0;32mI (62071) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m
+[0;33mW (62153) LOGGER: Time not synced yet; skipping log cycle[0m
+[0;33mW (63070) PURIFIER: System time not valid yet[0m
+[0;32mI (63072) UI: AQI=0 PM25=0.0 PM10=-1.00 TVOC=0.0 TEMP=0.0 HUM=0.0[0m

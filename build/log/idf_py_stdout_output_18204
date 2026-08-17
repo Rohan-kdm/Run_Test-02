@@ -1,0 +1,109 @@
+[1/11] Performing build step for 'bootloader'
+[1/1] C:\Windows\system32\cmd.exe /C "cd /D C:\Run_Test-02\build\bootloader\esp-idf\esptool_py && C:\Espressif\tools\python\v5.3.5\venv\Scripts\python.exe D:/v5.3.5/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 C:/Run_Test-02/build/bootloader/bootloader.bin"
+Bootloader binary size 0x59f0 bytes. 0x2610 bytes (30%) free.
+[2/11] No install step for 'bootloader'
+[3/11] C:\Windows\system32\cmd.exe /C "cd /D C:\Run_Test-02\build && C:\Espressif\tools\python\v5.3.5\venv\Scripts\python.exe D:/v5.3.5/esp-idf/components/spiffs/spiffsgen.py 0x7e0000 C:/Run_Test-02/spiffs C:/Run_Test-02/build/storage.bin --page-size=256 --obj-name-len=32 --meta-len=4 --use-magic --use-magic-len"
+[4/11] Completed 'bootloader'
+[5/11] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+In file included from C:/Run_Test-02/components/lvgl__lvgl/src/misc/lv_log.h:16,
+                 from C:/Run_Test-02/components/lvgl__lvgl/lvgl.h:25,
+                 from C:/Run_Test-02/components/lvgl__lvgl/demos/lv_demos.h:16,
+                 from C:/Run_Test-02/main/waveshare_rgb_lcd_port.h:13,
+                 from C:/Run_Test-02/main/main.c:5:
+C:/Run_Test-02/components/lvgl__lvgl/src/lv_conf_internal.h:46:17: note: '#pragma message: Possible failure to include lv_conf.h, please read the comment in this file if you get errors'
+   46 |         #pragma message("Possible failure to include lv_conf.h, please read the comment in this file if you get errors")
+      |                 ^~~~~~~
+C:/Run_Test-02/main/main.c: In function 'sd_logging_task':
+C:/Run_Test-02/main/main.c:618:13: warning: unused variable 'avg_aqi' [-Wunused-variable]
+  618 |         int avg_aqi = aqi_accum / sample_count;
+      |             ^~~~~~~
+C:/Run_Test-02/main/main.c:617:13: warning: unused variable 'avg_filter' [-Wunused-variable]
+  617 |         int avg_filter = filter_life_accum / sample_count;
+      |             ^~~~~~~~~~
+C:/Run_Test-02/main/main.c:616:13: warning: unused variable 'avg_fan' [-Wunused-variable]
+  616 |         int avg_fan = fan_speed_accum / sample_count;
+      |             ^~~~~~~
+C:/Run_Test-02/main/main.c:615:15: warning: unused variable 'avg_pm10' [-Wunused-variable]
+  615 |         float avg_pm10 = pm10_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:614:15: warning: unused variable 'avg_eco2' [-Wunused-variable]
+  614 |         float avg_eco2 = eco2_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:613:15: warning: unused variable 'avg_tvoc' [-Wunused-variable]
+  613 |         float avg_tvoc = tvoc_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:612:15: warning: unused variable 'avg_gas' [-Wunused-variable]
+  612 |         float avg_gas = gas_accum / sample_count;
+      |               ^~~~~~~
+C:/Run_Test-02/main/main.c:611:15: warning: unused variable 'avg_pressure' [-Wunused-variable]
+  611 |         float avg_pressure = pressure_accum / sample_count;
+      |               ^~~~~~~~~~~~
+C:/Run_Test-02/main/main.c:610:15: warning: unused variable 'avg_hum' [-Wunused-variable]
+  610 |         float avg_hum = hum_accum / sample_count;
+      |               ^~~~~~~
+C:/Run_Test-02/main/main.c:609:15: warning: unused variable 'avg_temp' [-Wunused-variable]
+  609 |         float avg_temp = temp_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:608:15: warning: unused variable 'avg_pm25' [-Wunused-variable]
+  608 |         float avg_pm25 = pm25_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:529:22: warning: unused variable 'interval' [-Wunused-variable]
+  529 |     const TickType_t interval = pdMS_TO_TICKS(60000); // 1-minute interval
+      |                      ^~~~~~~~
+C:/Run_Test-02/main/main.c: At top level:
+C:/Run_Test-02/main/main.c:28:13: warning: 's_logger_ready' defined but not used [-Wunused-variable]
+   28 | static bool s_logger_ready = true;
+      |             ^~~~~~~~~~~~~~
+C:/Run_Test-02/main/waveshare_rgb_lcd_port.h:68:20: warning: 'TAG' defined but not used [-Wunused-variable]
+   68 | static const char *TAG = "example";
+      |                    ^~~
+[6/11] Building CXX object esp-idf/main/CMakeFiles/__idf_main.dir/lgfx_wrapper.cpp.obj
+In file included from C:/Run_Test-02/components/lvgl__lvgl/src/misc/lv_log.h:16,
+                 from C:/Run_Test-02/components/lvgl__lvgl/lvgl.h:25,
+                 from C:/Run_Test-02/main/lgfx_wrapper.cpp:2:
+C:/Run_Test-02/components/lvgl__lvgl/src/lv_conf_internal.h:46:120: note: '#pragma message: Possible failure to include lv_conf.h, please read the comment in this file if you get errors'
+   46 |         #pragma message("Possible failure to include lv_conf.h, please read the comment in this file if you get errors")
+      |                                                                                                                        ^
+In file included from C:/Run_Test-02/main/lgfx_wrapper.cpp:7:
+C:/Run_Test-02/main/lgfx_wrapper.cpp: In function 'void lgfx_hardware_init()':
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::on_color_trans_done' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::user_ctx' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::lcd_param_bits' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::<unnamed struct>::dc_low_on_data' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::scl_speed_hz' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7/11] Linking C static library esp-idf\main\libmain.a
+[8/11] Generating ld/sections.ld
+[9/11] Linking CXX executable lvgl_porting.elf
+[10/11] Generating binary image from built executable
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+Generated C:/Run_Test-02/build/lvgl_porting.bin
+[11/11] C:\Windows\system32\cmd.exe /C "cd /D C:\Run_Test-02\build\esp-idf\esptool_py && C:\Espressif\tools\python\v5.3.5\venv\Scripts\python.exe D:/v5.3.5/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/Run_Test-02/build/partition_table/partition-table.bin C:/Run_Test-02/build/lvgl_porting.bin"
+lvgl_porting.bin binary size 0x2d2df0 bytes. Smallest app partition is 0x800000 bytes. 0x52d210 bytes (65%) free.

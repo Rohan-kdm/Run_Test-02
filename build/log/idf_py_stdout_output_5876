@@ -1,0 +1,218 @@
+[1/12] Performing build step for 'bootloader'
+[1/1] C:\Windows\system32\cmd.exe /C "cd /D C:\Run_Test-02\build\bootloader\esp-idf\esptool_py && C:\Espressif\tools\python\v5.3.5\venv\Scripts\python.exe D:/v5.3.5/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 C:/Run_Test-02/build/bootloader/bootloader.bin"
+Bootloader binary size 0x59f0 bytes. 0x2610 bytes (30%) free.
+[2/12] No install step for 'bootloader'
+[3/12] C:\Windows\system32\cmd.exe /C "cd /D C:\Run_Test-02\build && C:\Espressif\tools\python\v5.3.5\venv\Scripts\python.exe D:/v5.3.5/esp-idf/components/spiffs/spiffsgen.py 0x7e0000 C:/Run_Test-02/spiffs C:/Run_Test-02/build/storage.bin --page-size=256 --obj-name-len=32 --meta-len=4 --use-magic --use-magic-len"
+[4/12] Completed 'bootloader'
+[5/12] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+In file included from C:/Run_Test-02/components/lvgl__lvgl/src/misc/lv_log.h:16,
+                 from C:/Run_Test-02/components/lvgl__lvgl/lvgl.h:25,
+                 from C:/Run_Test-02/components/lvgl__lvgl/demos/lv_demos.h:16,
+                 from C:/Run_Test-02/main/waveshare_rgb_lcd_port.h:13,
+                 from C:/Run_Test-02/main/main.c:5:
+C:/Run_Test-02/components/lvgl__lvgl/src/lv_conf_internal.h:46:17: note: '#pragma message: Possible failure to include lv_conf.h, please read the comment in this file if you get errors'
+   46 |         #pragma message("Possible failure to include lv_conf.h, please read the comment in this file if you get errors")
+      |                 ^~~~~~~
+C:/Run_Test-02/main/main.c: In function 'sd_logging_task':
+C:/Run_Test-02/main/main.c:618:13: warning: unused variable 'avg_aqi' [-Wunused-variable]
+  618 |         int avg_aqi = aqi_accum / sample_count;
+      |             ^~~~~~~
+C:/Run_Test-02/main/main.c:617:13: warning: unused variable 'avg_filter' [-Wunused-variable]
+  617 |         int avg_filter = filter_life_accum / sample_count;
+      |             ^~~~~~~~~~
+C:/Run_Test-02/main/main.c:616:13: warning: unused variable 'avg_fan' [-Wunused-variable]
+  616 |         int avg_fan = fan_speed_accum / sample_count;
+      |             ^~~~~~~
+C:/Run_Test-02/main/main.c:615:15: warning: unused variable 'avg_pm10' [-Wunused-variable]
+  615 |         float avg_pm10 = pm10_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:614:15: warning: unused variable 'avg_eco2' [-Wunused-variable]
+  614 |         float avg_eco2 = eco2_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:613:15: warning: unused variable 'avg_tvoc' [-Wunused-variable]
+  613 |         float avg_tvoc = tvoc_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:612:15: warning: unused variable 'avg_gas' [-Wunused-variable]
+  612 |         float avg_gas = gas_accum / sample_count;
+      |               ^~~~~~~
+C:/Run_Test-02/main/main.c:611:15: warning: unused variable 'avg_pressure' [-Wunused-variable]
+  611 |         float avg_pressure = pressure_accum / sample_count;
+      |               ^~~~~~~~~~~~
+C:/Run_Test-02/main/main.c:610:15: warning: unused variable 'avg_hum' [-Wunused-variable]
+  610 |         float avg_hum = hum_accum / sample_count;
+      |               ^~~~~~~
+C:/Run_Test-02/main/main.c:609:15: warning: unused variable 'avg_temp' [-Wunused-variable]
+  609 |         float avg_temp = temp_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:608:15: warning: unused variable 'avg_pm25' [-Wunused-variable]
+  608 |         float avg_pm25 = pm25_accum / sample_count;
+      |               ^~~~~~~~
+C:/Run_Test-02/main/main.c:529:22: warning: unused variable 'interval' [-Wunused-variable]
+  529 |     const TickType_t interval = pdMS_TO_TICKS(60000); // 1-minute interval
+      |                      ^~~~~~~~
+C:/Run_Test-02/main/main.c: At top level:
+C:/Run_Test-02/main/main.c:28:13: warning: 's_logger_ready' defined but not used [-Wunused-variable]
+   28 | static bool s_logger_ready = true;
+      |             ^~~~~~~~~~~~~~
+C:/Run_Test-02/main/waveshare_rgb_lcd_port.h:68:20: warning: 'TAG' defined but not used [-Wunused-variable]
+   68 | static const char *TAG = "example";
+      |                    ^~~
+[6/12] Building CXX object esp-idf/main/CMakeFiles/__idf_main.dir/lgfx_wrapper.cpp.obj
+In file included from C:/Run_Test-02/components/lvgl__lvgl/src/misc/lv_log.h:16,
+                 from C:/Run_Test-02/components/lvgl__lvgl/lvgl.h:25,
+                 from C:/Run_Test-02/main/lgfx_wrapper.cpp:2:
+C:/Run_Test-02/components/lvgl__lvgl/src/lv_conf_internal.h:46:120: note: '#pragma message: Possible failure to include lv_conf.h, please read the comment in this file if you get errors'
+   46 |         #pragma message("Possible failure to include lv_conf.h, please read the comment in this file if you get errors")
+      |                                                                                                                        ^
+In file included from C:/Run_Test-02/main/lgfx_wrapper.cpp:7:
+C:/Run_Test-02/main/lgfx_wrapper.cpp: In function 'void lgfx_hardware_init()':
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::on_color_trans_done' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::user_ctx' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::lcd_param_bits' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::<unnamed struct>::dc_low_on_data' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/Run_Test-02/components/espressif__esp_lcd_touch_gt911/include/esp_lcd_touch_gt911.h:66:5: warning: missing initializer for member 'esp_lcd_panel_io_i2c_config_t::scl_speed_hz' [-Wmissing-field-initializers]
+   66 |     }
+      |     ^
+C:/Run_Test-02/main/lgfx_wrapper.cpp:56:58: note: in expansion of macro 'ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG'
+   56 |             esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+      |                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7/12] Linking C static library esp-idf\main\libmain.a
+[8/12] Generating ld/sections.ld
+[9/12] Linking CXX executable lvgl_porting.elf
+[10/12] Generating binary image from built executable
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+Generated C:/Run_Test-02/build/lvgl_porting.bin
+[11/12] C:\Windows\system32\cmd.exe /C "cd /D C:\Run_Test-02\build\esp-idf\esptool_py && C:\Espressif\tools\python\v5.3.5\venv\Scripts\python.exe D:/v5.3.5/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/Run_Test-02/build/partition_table/partition-table.bin C:/Run_Test-02/build/lvgl_porting.bin"
+lvgl_porting.bin binary size 0x2d2de0 bytes. Smallest app partition is 0x800000 bytes. 0x52d220 bytes (65%) free.
+[11/12] C:\Windows\system32\cmd.exe /C "cd /D D:\v5.3.5\esp-idf\components\esptool_py && C:\Espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_PATH=D:/v5.3.5/esp-idf -D SERIAL_TOOL=C:/Espressif/tools/python/v5.3.5/venv/Scripts/python.exe;;D:/v5.3.5/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32s3 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=C:/Run_Test-02/build -P D:/v5.3.5/esp-idf/components/esptool_py/run_serial_tool.cmake"
+esptool.py --chip esp32s3 -p COM6 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 16MB 0x0 bootloader/bootloader.bin 0x20000 lvgl_porting.bin 0x8000 partition_table/partition-table.bin 0xf000 ota_data_initial.bin 0x820000 storage.bin
+esptool.py v4.11.0
+Serial port COM6
+Connecting....
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+MAC: dc:b4:d9:26:1b:b0
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00020000 to 0x002f2fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Flash will be erased from 0x0000f000 to 0x00010fff...
+Flash will be erased from 0x00820000 to 0x00ffffff...
+SHA digest in image updated
+Compressed 23024 bytes to 14139...
+Writing at 0x00000000... (100 %)
+Wrote 23024 bytes (14139 compressed) at 0x00000000 in 0.5 seconds (effective 368.4 kbit/s)...
+Hash of data verified.
+Compressed 2960864 bytes to 1076214...
+Writing at 0x00020000... (1 %)
+Writing at 0x0002c7b2... (3 %)
+Writing at 0x0003ae14... (4 %)
+Writing at 0x00047d0d... (6 %)
+Writing at 0x0016368b... (7 %)
+Writing at 0x0016a6d8... (9 %)
+Writing at 0x00172627... (10 %)
+Writing at 0x0017b3d6... (12 %)
+Writing at 0x001855b0... (13 %)
+Writing at 0x00191ae1... (15 %)
+Writing at 0x001a017d... (16 %)
+Writing at 0x001a52c7... (18 %)
+Writing at 0x001aa12d... (19 %)
+Writing at 0x001af609... (21 %)
+Writing at 0x001b6b88... (22 %)
+Writing at 0x001c1205... (24 %)
+Writing at 0x001c721d... (25 %)
+Writing at 0x001cdcc3... (27 %)
+Writing at 0x001d3bc7... (28 %)
+Writing at 0x001d9c94... (30 %)
+Writing at 0x001df8a6... (31 %)
+Writing at 0x001e568c... (33 %)
+Writing at 0x001ebddd... (34 %)
+Writing at 0x001f22fd... (36 %)
+Writing at 0x001f7c8f... (37 %)
+Writing at 0x001fd4e4... (39 %)
+Writing at 0x002031e4... (40 %)
+Writing at 0x00208e97... (42 %)
+Writing at 0x0020f60d... (43 %)
+Writing at 0x002151c5... (45 %)
+Writing at 0x0021b21f... (46 %)
+Writing at 0x002213d5... (48 %)
+Writing at 0x00227335... (50 %)
+Writing at 0x0022d75c... (51 %)
+Writing at 0x002332e1... (53 %)
+Writing at 0x002390f7... (54 %)
+Writing at 0x0023ed8d... (56 %)
+Writing at 0x00244bbb... (57 %)
+Writing at 0x0024a937... (59 %)
+Writing at 0x00251391... (60 %)
+Writing at 0x0025701f... (62 %)
+Writing at 0x0025cc1d... (63 %)
+Writing at 0x002634dd... (65 %)
+Writing at 0x0026926b... (66 %)
+Writing at 0x0026f023... (68 %)
+Writing at 0x0027428f... (69 %)
+Writing at 0x00279357... (71 %)
+Writing at 0x0027e7f0... (72 %)
+Writing at 0x00283fa3... (74 %)
+Writing at 0x0028957e... (75 %)
+Writing at 0x0028eaa7... (77 %)
+Writing at 0x002948aa... (78 %)
+Writing at 0x0029a381... (80 %)
+Writing at 0x0029feac... (81 %)
+Writing at 0x002a5cac... (83 %)
+Writing at 0x002ab299... (84 %)
+Writing at 0x002b07ce... (86 %)
+Writing at 0x002b803f... (87 %)
+Writing at 0x002c11c1... (89 %)
+Writing at 0x002c883e... (90 %)
+Writing at 0x002ce5c5... (92 %)
+Writing at 0x002d6b96... (93 %)
+Writing at 0x002dc882... (95 %)
+Writing at 0x002e2d2d... (96 %)
+Writing at 0x002e90f8... (98 %)
+Writing at 0x002eed4e... (100 %)
+Wrote 2960864 bytes (1076214 compressed) at 0x00020000 in 29.5 seconds (effective 801.9 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 137...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (137 compressed) at 0x00008000 in 0.0 seconds (effective 800.4 kbit/s)...
+Hash of data verified.
+Compressed 8192 bytes to 31...
+Writing at 0x0000f000... (100 %)
+Wrote 8192 bytes (31 compressed) at 0x0000f000 in 0.0 seconds (effective 1605.9 kbit/s)...
+Hash of data verified.
+Compressed 8257536 bytes to 15032...
+Writing at 0x00820000... (100 %)
+Wrote 8257536 bytes (15032 compressed) at 0x00820000 in 27.2 seconds (effective 2427.2 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

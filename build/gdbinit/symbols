@@ -13,8 +13,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file C:/Users/OPRUSS/Downloads/Run_Test-02/build/bootloader/bootloader.elf
+    add-symbol-file C:/Run_Test-02/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file C:/Users/OPRUSS/Downloads/Run_Test-02/build/lvgl_porting.elf
+file C:/Run_Test-02/build/lvgl_porting.elf

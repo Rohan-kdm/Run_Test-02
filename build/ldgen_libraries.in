@@ -85,4 +85,9 @@ $<TARGET_FILE:__idf_wifi_provisioning>
 $<TARGET_FILE:__idf_espressif__esp_lcd_touch>
 $<TARGET_FILE:__idf_espressif__esp_lcd_touch_gt911>
 $<TARGET_FILE:__idf_lvgl__lvgl>
+$<TARGET_FILE:__idf_LovyanGFX>
+$<TARGET_FILE:__idf_espressif__cjson>
+$<TARGET_FILE:__idf_espressif__dl_fft>
+$<TARGET_FILE:__idf_espressif__esp-dsp>
+$<TARGET_FILE:__idf_espressif__esp-sr>
 $<TARGET_FILE:__idf_main>

@@ -1002,7 +1002,7 @@
     #ifdef CONFIG_LV_FONT_MONTSERRAT_10
         #define LV_FONT_MONTSERRAT_10 CONFIG_LV_FONT_MONTSERRAT_10
     #else
-        #define LV_FONT_MONTSERRAT_10 0
+        #define LV_FONT_MONTSERRAT_10 1
     #endif
 #endif
 #ifndef LV_FONT_MONTSERRAT_12
@@ -2166,7 +2166,7 @@
     #ifdef CONFIG_LV_USE_QRCODE
         #define LV_USE_QRCODE CONFIG_LV_USE_QRCODE
     #else
-        #define LV_USE_QRCODE 0
+        #define LV_USE_QRCODE 1
     #endif
 #endif
 

@@ -1,6 +1,10 @@
 #include "sd_card.h"
 #include "ch422g.h"
 #include "esp_check.h"
+#include "driver/i2c_master.h"
+
+// Define the global bus handle
+i2c_master_bus_handle_t shared_i2c_bus = NULL;
 
 static const char *TAG = "example";
 
@@ -64,25 +68,24 @@ static esp_err_t s_example_read_file(const char *path)
 /**
  * @brief i2c master initialization
  */
-static esp_err_t i2c_master_init(void)
+esp_err_t i2c_master_init(void)
 {
-    i2c_config_t conf = {
-        .mode = I2C_MODE_MASTER,
-        .sda_io_num = I2C_MASTER_SDA_IO,
-        .scl_io_num = I2C_MASTER_SCL_IO,
-        .sda_pullup_en = GPIO_PULLUP_ENABLE,
-        .scl_pullup_en = GPIO_PULLUP_ENABLE,
-        .master.clk_speed = I2C_MASTER_FREQ_HZ,
+    if (shared_i2c_bus != NULL) return ESP_OK; // Already initialized
+
+    i2c_master_bus_config_t i2c_mst_config = {
+        .i2c_port = -1,
+        .sda_io_num = (gpio_num_t)I2C_MASTER_SDA_IO,
+        .scl_io_num = (gpio_num_t)I2C_MASTER_SCL_IO,
+        .clk_source = I2C_CLK_SRC_DEFAULT,
+        .glitch_ignore_cnt = 7,
+        .intr_priority = 0,
+        .trans_queue_depth = 0,
+        .flags = {
+            .enable_internal_pullup = 1,
+        },
     };
-
-    ESP_ERROR_CHECK(i2c_param_config(I2C_MASTER_NUM, &conf));
-
-    return i2c_driver_install(
-        I2C_MASTER_NUM,
-        conf.mode,
-        I2C_MASTER_RX_BUF_DISABLE,
-        I2C_MASTER_TX_BUF_DISABLE,
-        0);
+    
+    return i2c_new_master_bus(&i2c_mst_config, &shared_i2c_bus);
 }
 
 esp_err_t waveshare_sd_card_init()
